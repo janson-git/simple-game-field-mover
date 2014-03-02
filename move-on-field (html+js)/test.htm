@@ -1,0 +1,74 @@
+﻿<head>
+<title> TEST </title>
+<meta http-equiv="Content-type: text/html; charset=utf-8">
+
+<style>
+#gameField {
+	border: 1px solid #ccc;
+}
+#gameField td {
+	border: 1px solid #ccc;
+	border-collapse: collapse;
+	width: 20px;
+	height: 20px;
+}
+#field {
+	float: left;
+	margin-right: 100px;
+}
+#commands {
+	width: 100px;
+	height: 200px;
+	border: 2px solid #333;
+	padding: 2px;
+}
+#help {
+	font-family: Arial, sans-serif;
+	font-size: 0.8em;
+}
+</style>
+
+</head>
+
+<body>
+
+<div id="field">
+
+	<table id="gameField">
+		<tr>
+			<td>&nbsp;</td>
+			<td>&nbsp;</td>
+			<td>&nbsp;</td>
+		</tr>
+			<tr>
+			<td>&nbsp;</td>
+			<td>&nbsp;</td>
+			<td>&nbsp;</td>
+		</tr>
+			<tr>
+			<td>&nbsp;</td>
+			<td>&nbsp;</td>
+			<td>&nbsp;</td>
+		</tr>
+	</table>
+
+</div>
+
+<div>
+	<div id="help">
+		You can set list of commands. Supported commands is:
+		<li><b>go</b> - move by one step in current direction</li>
+		<li><b>left</b> - rotate player to the left</li>
+		<li><b>right</b> - rotate player to the right</li>
+	</div>
+	
+	<textarea id="commands"></textarea>
+	<br />
+	<button id="startProgram">Start</button>
+</div>
+
+
+<script src="jquery-1.9.1.min.js"></script>
+<script src="test.js"></script>
+
+</body>
