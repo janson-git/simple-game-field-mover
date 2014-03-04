@@ -141,7 +141,7 @@ function go() {
 			}
 			break;
 		case "down":
-			if (newRow < fieldHeight) {
+			if (newRow < (fieldHeight - 1)) {
 				newRow++;
 			}
 			break;
@@ -151,7 +151,7 @@ function go() {
 			}
 			break;
 		case "right":
-			if (newCol < fieldWidth) {
+			if (newCol < (fieldWidth - 1)) {
 				newCol++;
 			}
 			break;
