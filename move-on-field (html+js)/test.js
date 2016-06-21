@@ -1,4 +1,5 @@
-﻿var player = {
+﻿var $gameField = $('#gameField');
+var player = {
 	direction: "up",
 	x: 1,
 	y: 1
@@ -39,7 +40,7 @@ function runCommand(command) {
 	redraw();
 }
 
-$("body").on("keypress", function(e) {
+$("body").on('keydown', function(e) {
 	switch (e.keyCode) {
 		case 38: // UP
 			runCommand("go");
@@ -56,16 +57,11 @@ $("body").on("keypress", function(e) {
 	}
 });
 
-
 var parsedCommands = [];
 // разбираем последовательность команд. Команды разделяются пробелом или переносом строки.
 $("#startProgram").on("click",  function() {
 	var commands = $("#commands").val();
-	var result = commands.replace("\r", "");
-	result = commands.replace(" ", "\n");
-	result = result.split("\n");
-	
-	parsedCommands = result;
+	parsedCommands = commands.replace("\r", "").replace(" ", "\n").split("\n");
 	runCommandList();
 });
 
@@ -121,6 +117,7 @@ function redraw() {
 }
 
 function clearGameField() {
+	var i,j;
 	for (i = 0; i <= fieldHeight; i++) {
 		for (j = 0; j <= fieldWidth; j++) {
 			selectCell(i,j).html("&nbsp;");
@@ -129,7 +126,7 @@ function clearGameField() {
 }
 
 function selectCell(row, col) {
-	return $("#gameField tr").eq(row).find("td").eq(col);
+	return $gameField.find("tr").eq(row).find("td").eq(col);
 }
 
 function go() {
@@ -165,16 +162,16 @@ function makeGameField(width, height) {
 	var tdCount = width;
 	var trCount = height;
 	// очищаем текущее поле
-	$("#gameField").html("");
-	var newFieldHtml = "";
+	$gameField.html("");
+	var i,j,newFieldHtml = "";
 	for (i = 0; i < trCount; i++) {
 		newFieldHtml += "\n<tr>\n";
 		for (j = 0; j < tdCount; j++) {
-			newFieldHtml += "\n<td>&nbsp</td>";
+			newFieldHtml += "\n<td>&nbsp;</td>";
 		}
 		newFieldHtml += "\n</tr>\n";
 	}
-	$("#gameField").html(newFieldHtml);
+	$gameField.html(newFieldHtml);
 }
 
 
